@@ -77,7 +77,6 @@ def weight_learner(model, at, head, proxy, ce, data_loader, weight_para, conf):
     cnt = 0
     num_env = weight_para.size(1)
 
-    # optimizer and schedule
     if conf.max_optimizer == "SGD":
         wl_optimizer = torch.optim.SGD([weight_para], lr= conf.wleaner_lr, momentum=0.9, weight_decay=0.) # 0.1
         scheduler = MultiStepLR(wl_optimizer, [5, 10], gamma=0.2, last_epoch=-1)
